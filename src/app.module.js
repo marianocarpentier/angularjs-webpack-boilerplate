@@ -8,6 +8,7 @@ import '@uirouter/angularjs';
 import 'angular-local-storage';
 
 import './common/app.scss';
+import './common/app.less';
 
 angular
   .module(config.appName, [

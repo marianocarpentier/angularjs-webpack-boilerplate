@@ -11,28 +11,42 @@ const commonConfig = {
     publicPath: '/dist/'
   },
   module: {
-    rules: [{
-      test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: ['css-loader', 'sass-loader']
-      })
-    },
-    {
-      test: /\.html$/,
-      use: [{
-        loader: 'html-loader',
-        options: {
-          minimize: true
-        }
-      }]
-    },
-    {
-      test: /\.(woff|woff2|eot|ttf|otf|png|svg|jpg|gif)$/,
-      use: [
-        'file-loader'
-      ]
-    }]
+    rules: [
+      {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          use: [{
+            loader: "css-loader"
+          }, {
+            loader: "less-loader"
+          }],
+          // use style-loader in development
+          fallback: "style-loader"
+        })
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
+      },
+      {
+        test: /\.html$/,
+        use: [{
+          loader: 'html-loader',
+          options: {
+            minimize: true
+          }
+        }]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf|png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
+      }
+    ]
   },
   plugins: [
     new CleanWebpackPlugin(),
