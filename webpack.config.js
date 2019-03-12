@@ -35,7 +35,7 @@ const commonConfig = {
     }]
   },
   plugins: [
-    new CleanWebpackPlugin(['./public/dist/']),
+    new CleanWebpackPlugin(),
     new ExtractTextPlugin('style.css'),
   ]
 };
